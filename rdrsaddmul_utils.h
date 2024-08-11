@@ -3,17 +3,22 @@
 
 #include <pthread.h>
 
+#define MULTIPLY 2 // Number to multiply by
+#define ADD 2 // Number to add with
+#define MAX_THREADS 10
+
 typedef struct shared_data {
     int sum;
-    int last_adder_id;
-    int last_multiplier_id;
-    int num_writers;
-} math_data;
+    int lastAdderId;
+    int lastMultiplierId;
+    int numWriters;
+} shared_data;
 
-extern int readers_count;
-extern math_data sum_data;
+extern shared_data sum_data;
 extern pthread_mutex_t data_lock;
 extern pthread_mutex_t count_lock;
+
+extern int readers_count;
 extern int readers;
 extern int adders;
 extern int multipliers;
